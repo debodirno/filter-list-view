@@ -7,15 +7,16 @@
     <EditText
         android:id="@+id/search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter to search books, authors, publishers"
+
+        android:layout_height="45dp"
+        android:hint="Enter to search books, authors or publishers"
         android:singleLine="true"
         android:textSize="18dp"
-        android:textColorHint="#ffffff" />
+        android:clickable="true" />
 
     <ListView
         android:id="@+id/custView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
