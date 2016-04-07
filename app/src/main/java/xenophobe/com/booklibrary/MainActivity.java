@@ -8,9 +8,13 @@ import java.util.ArrayList;
 import java.lang.String;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
+import android.text.style.StyleSpan;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -119,20 +123,20 @@ public class MainActivity extends Activity {
                 builder.setTitle("About");
                 builder.setMessage("Debodirno Chandra\n©2016\nMIT License");
                 AlertDialog dialog = builder.show();
-
-                TextView messageView = (TextView)dialog.findViewById(android.R.id.message);
-                messageView.setGravity(Gravity.CENTER);
-
-                TextView titleView = (TextView)dialog.findViewById(this.getResources().getIdentifier("alertTitle", "id", "android"));
-                if (titleView != null) {
-                    titleView.setGravity(Gravity.CENTER);
-                }
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
 
         }
+    }
+
+    public void setTextWithSpan(TextView textView, String text, String spanText, StyleSpan style) {
+        SpannableStringBuilder sb = new SpannableStringBuilder(text);
+        int start = text.indexOf(spanText);
+        int end = start + spanText.length();
+        sb.setSpan(style, start, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        textView.setText(sb);
     }
 
     private void initializeList() {
